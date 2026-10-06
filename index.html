@@ -1299,7 +1299,16 @@ a { color: inherit; }
       }
 
       if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
-        emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+        var params = {
+          from_name: form.elements.name.value.trim(),
+          name: form.elements.name.value.trim(),
+          from_email: form.elements.email.value.trim(),
+          email: form.elements.email.value.trim(),
+          reply_to: form.elements.email.value.trim(),
+          message: form.elements.message.value.trim()
+        };
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
           .then(function () {
             note.style.color = "#4ade80";
             note.textContent = "Thank you! Your message has been sent successfully to " + RECIPIENT;
