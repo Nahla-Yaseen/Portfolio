@@ -1280,8 +1280,8 @@ a { color: inherit; }
       showError(email, "Please enter a valid email address.");
       ok = false;
     }
-    if (message.value.trim().length < 10) {
-      showError(message, "Please write a message (at least 10 characters).");
+    if (!message.value.trim()) {
+      showError(message, "Please enter your message.");
       ok = false;
     }
     return ok;
